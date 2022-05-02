@@ -2,7 +2,7 @@
   "name": "github_finder",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rezacse.github.io",
+  "homepage": "https://rezacse.github.io/github_finder",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/styles": "^4.11.5",
