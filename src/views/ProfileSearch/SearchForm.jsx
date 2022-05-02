@@ -19,13 +19,8 @@ const validationSchema = Yup.object().shape({
 
 const useStyles = makeStyles(() => ({
   root: {
-    '& .MuiFormControl-root': {
-      marginTop: '15px'
-    },
-    '& .MuiFormControlLabel-label': {
-      '&:first-letter': {
-        textTransform: 'capitalize'
-      }
+    '& .MuiFormLabel-root': {
+      color: 'black !important'
     }
   },
   submitBtn: {
@@ -35,7 +30,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const searchTypes = lookupHelper.getSearchTypes();
-function SearchForm({ keyword, searchType, submitHandler }) {
+function SearchForm({ keyword, searchType, isSubmitting, submitHandler }) {
   const classes = useStyles();
 
   return (
@@ -49,17 +44,21 @@ function SearchForm({ keyword, searchType, submitHandler }) {
       enableReinitialize
     >
       <AppRadioBtnGroup
-        label="Search By"
+        label="Choose Search By"
         name="searchType"
         items={searchTypes}
       />
       <AppFormField
         name="keyword"
-        label="Keyword"
+        label="Enter Name"
         placeholder="Search by user or organization"
       />
 
-      <AppSubmitButton label="Search" className={classes.submitBtn} />
+      <AppSubmitButton
+        isSubmitting={isSubmitting}
+        label="Search"
+        className={classes.submitBtn}
+      />
     </AppForm>
   );
 }
@@ -67,10 +66,12 @@ function SearchForm({ keyword, searchType, submitHandler }) {
 SearchForm.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   keyword: PropTypes.string,
+  isSubmitting: PropTypes.bool,
   searchType: PropTypes.number.isRequired
 };
 
 SearchForm.defaultProps = {
+  isSubmitting: false,
   keyword: ''
 };
 

@@ -6,7 +6,7 @@ const SEARCH_BY = Object.freeze({
 const getSearchTypes = () => {
   return Object.keys(SEARCH_BY).map((key) => ({
     value: SEARCH_BY[key],
-    title: key
+    title: `${key.charAt(0)}${key.substring(1, key.length).toLocaleLowerCase()}`
   }));
 };
 export default {

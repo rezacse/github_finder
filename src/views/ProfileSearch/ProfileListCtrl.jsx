@@ -22,14 +22,18 @@ function ProfileListCtrl({ isFetching, keyword, items, noOfTotalItems }) {
   return (
     <>
       {isFetching && <AppLoadingCtrl title="Searching..." />}
-      {noResult && <Typography>No results found for {keyword}</Typography>}
+      {noResult && (
+        <Typography aria-label="Result Summary">
+          No results found for {keyword}
+        </Typography>
+      )}
       {noOfTotalItems > 0 && (
-        <Typography>
+        <Typography aria-label="Result Summary">
           Total <strong>{noOfTotalItems}</strong> Records found for{' '}
           <strong>{keyword}</strong>
         </Typography>
       )}
-      <ul className={classes.list}>
+      <ul className={classes.list} aria-label="List of Profiles">
         {items.map((item) => (
           <ProfileItem key={item.name} profileInfo={item} />
         ))}

@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import searchService from '../../services/searchService';
-import PageCtrl from '../../components/PageCtrl';
 import SearchForm from './SearchForm';
 import ProfileListCtrl from './ProfileListCtrl';
 import routePath from '../../routePath';
@@ -76,27 +75,26 @@ function ProfileSearchView() {
   };
 
   return (
-    <PageCtrl title="Search">
-      <article className={classes.root}>
-        <h3>Search User/Organization</h3>
-        <section aria-label="Search Form" className={classes.section}>
-          <SearchForm
-            keyword={keyword}
-            searchType={sType || lookupHelper.SEARCH_BY.USER}
-            submitHandler={submitHandler}
-          />
-        </section>
-        <hr />
-        <section className={classes.section}>
-          <ProfileListCtrl
-            items={state.profiles}
-            keyword={keyword}
-            isFetching={state.isFetching}
-            noOfTotalItems={state.noOfTotalItems}
-          />
-        </section>
-      </article>
-    </PageCtrl>
+    <article className={classes.root}>
+      <h3>Search User/Organization</h3>
+      <section aria-label="Search Profiles" className={classes.section}>
+        <SearchForm
+          keyword={keyword}
+          isSubmitting={state.isFetching}
+          searchType={sType || lookupHelper.SEARCH_BY.USER}
+          submitHandler={submitHandler}
+        />
+      </section>
+      <hr />
+      <section aria-label="Search Results" className={classes.section}>
+        <ProfileListCtrl
+          items={state.profiles}
+          keyword={keyword}
+          isFetching={state.isFetching}
+          noOfTotalItems={state.noOfTotalItems}
+        />
+      </section>
+    </article>
   );
 }
 

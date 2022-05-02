@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useFormikContext } from 'formik';
 import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
+// import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
@@ -11,9 +11,6 @@ import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles(() => ({
   formGroup: {
     flexDirection: 'row'
-  },
-  label: {
-    color: 'black'
   }
 }));
 
@@ -23,10 +20,11 @@ function AppRadioBtnGroup({ name, label, items }) {
   const classes = useStyles();
 
   return (
-    <FormControl id="app-radio">
-      <FormLabel className={classes.label}>{label}</FormLabel>
+    <div id={name}>
+      <FormLabel aria-label={label} className={classes.label}>
+        {label}
+      </FormLabel>
       <RadioGroup
-        aria-labelledby="app-radio"
         className={classes.formGroup}
         name={name}
         value={values[name]}
@@ -42,7 +40,7 @@ function AppRadioBtnGroup({ name, label, items }) {
           />
         ))}
       </RadioGroup>
-    </FormControl>
+    </div>
   );
 }
 

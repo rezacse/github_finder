@@ -30,16 +30,24 @@ function ProfileItem({ profileInfo }) {
   if (!profileInfo) return null;
 
   return (
-    <li aria-label="Profile Item" className={classes.root}>
+    <li aria-label="Profile Details" className={classes.root}>
       <Avatar
-        alt=""
+        alt={`Profile Picture of ${profileInfo.name}`}
         className={classes.avatar}
         src={profileInfo.avatarUrl || ''}
+        imgProps={{
+          loading: 'lazy'
+        }}
       />
       <Typography className={classes.name}>
         Name:{' '}
         <strong>
-          <a href={profileInfo.pageUrl} target="_blank" rel="noreferrer">
+          <a
+            href={profileInfo.pageUrl}
+            target="_blank"
+            aria-label={`Profile Link of ${profileInfo.name}`}
+            rel="noreferrer"
+          >
             {profileInfo.name}
           </a>
         </strong>

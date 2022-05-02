@@ -6,6 +6,7 @@ function AppForm({
   initValues,
   children,
   onSubmit,
+  className,
   validationSchema,
   enableReinitialize
 }) {
@@ -16,7 +17,7 @@ function AppForm({
       onSubmit={onSubmit}
       enableReinitialize={enableReinitialize}
     >
-      {() => <form>{children}</form>}
+      {() => <form className={className}>{children}</form>}
     </Formik>
   );
 }
@@ -26,6 +27,7 @@ AppForm.propTypes = {
   initValues: PropTypes.objectOf(PropTypes.any).isRequired,
   onSubmit: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   enableReinitialize: PropTypes.bool,
   // eslint-disable-next-line react/forbid-prop-types
   validationSchema: PropTypes.objectOf(PropTypes.any)
@@ -34,6 +36,7 @@ AppForm.propTypes = {
 AppForm.defaultProps = {
   // initValues: {},
   validationSchema: {},
+  className: '',
   enableReinitialize: false
 };
 export default AppForm;
