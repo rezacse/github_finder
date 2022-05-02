@@ -59,11 +59,7 @@ function SearchForm({ keyword, searchType, submitHandler }) {
         placeholder="Search by user or organization"
       />
 
-      <AppSubmitButton
-        label="Search"
-        className={classes.submitBtn}
-        isFullWidth={false}
-      />
+      <AppSubmitButton label="Search" className={classes.submitBtn} />
     </AppForm>
   );
 }
